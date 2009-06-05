@@ -1,0 +1,89 @@
+# Vous voyez là le fichier de configuration de botounet
+# Les options suivantes sont aussi activables grace à la ligne de commande (commande /set). See manpages
+# La syntaxe est simple : option = valeur
+# Tout ce qui est situé après un "#" en début de ligne est ignoré. C'est plutôt pratique, sauf que,
+# bêtement, j'ai utilisé la syntaxe des commentaires python (un "#"), ce qui rend impossible 
+# l'écriture du nom complet du canal. Eh oui, c'est idiot.
+#
+# This file is structured through this map :
+# [section1]
+# option1 = value
+# option2 = value
+#
+# [section2]
+# option1 = value
+# option2 = value
+#
+# sections are : irc, bot, ui, files
+
+[irc]
+# Bon, ça, c'est le serveur.
+server = kornbluth.freenode.net
+# Le port sur lequel on se connecte
+port = 6667
+# Le canal à rejoindre.
+# Without the '#' !
+channel = botounet
+# Le pseudo du bot
+nick = firmin
+# Le mot de passe qui sera envoyé à nickserv. Laisser vide pour ne pas vous identifier.
+nickserv_pwd =
+# Ne sert à rien
+nomreel = R2D2
+# Ne sert pas à grand chose non plus.
+quit_message = Mon maître m'a tuer
+
+[bot]
+# Le mot de passe qui sera utilisé pour l'administration à distance.
+# La syntaxe sera : /msg <pseudo du bot> <mot de passe admin> <commande>
+admin_pwd =
+# N'est pas activé par défaut. True pour l'activer
+# Est souvent agaçant. La murflerie est malheureusement chose courante sur Internet.
+filtre_grosmots = False
+# Si le bot devra répondre lorsqu'un cite son nom sur un cnnal publique.
+# Peut aussi rapidement devenir agaçant.
+reponse_publique = False
+# Le nombre de résultats pour la commande !google
+google_max_results = 3
+# Accepter la même commande un nombre limité de fois
+limite_commandes = 5
+# En secondes, c'est le temps d'attente entre deux commandes.
+delai_commandes = 5
+# Temps (en secondes) durant lequel l'auth d'un admin est conservé. Défaut : 20 jours
+admin_retention = 2592000
+
+[files]
+# Dans les chemins de fichiers et de dossiers qui suivent, 
+# %(curdir)s sera remplacé par le dossier du script.
+# Le nom de l'option parle de lui-même.
+fichier_log_erreurs = %(curdir)s/logs/error.log
+# Le dossier où seront contenues les conversations, sous la forme : DOSSIER_LOG_MSGS/cannal/date.log
+dossier_log_msgs = %(curdir)s/log_messages
+# Le fichier contenant les messages privés reçus.
+fichier_log_privmsgs = %(curdir)s/logs/privmsgs.log
+# Fichier contenant le informations relatives à l'utilisation du bot
+fichier_log = %(curdir)s/logs/infos.log
+# stocke les messages privés qu'il n'a pas compris
+fichier_log_pascompris = %(curdir)s/logs/wtf.log
+# Le ficher de configuration contenant les réponses des messages personnels
+# Voir le manuel d'utilisation pour connaître la syntaxe.
+fichier_reponses_priv = %(curdir)s/config/reponses.bot
+# Le fichier contenant les réponses des messages publics (commandes précédées d'un !)
+fichier_reponses_pub = %(curdir)s/config/reponses_pub.bot
+# Fichier contenant une liste de gros mots.
+# Oui, c'est très utile.
+fichier_grosmots = %(curdir)s/config/grosmots.bot
+# Fichier contenant la liste des gens ignorés.
+# Ne devrait pas être modifiée, normalement.
+fichier_ignore = %(curdir)s/config/ignorelist.bot
+# Fichier contenant la liste des administrateur 
+# Ne doit pas être modifié non plus, les administrateurs s'authentifient une seule fois
+fichier_admin = %(curdir)s/config/adminlist.bot
+
+[oxyradio]
+# On garde 10 chansons en mémoire.
+limite_historique = 10
+
+[ui]
+# Use the graphical interface
+use_gtk = False
