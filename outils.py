@@ -10,6 +10,7 @@ import re
 import string
 import subprocess
 from random import randrange
+from __future__ import with
 
 def _(text, *args):
     return text % args

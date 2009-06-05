@@ -33,7 +33,7 @@ import readline # Is this useful ? (for the cmd module)
 from getopt import GetoptError, getopt as parse_opts
 import ConfigParser
 from random import randint
-
+from __future__ import with
 from outils import _
 
 communication = __import__("communication")
@@ -236,7 +236,7 @@ class Console(Cmd): # {{{
         """/eval foo : try to execute a python cmd. Don't use this."""
         try:
             eval(args)
-        except StandardError as err :
+        except StandardError, err :
             print "Erreur : %s" % str(err)
 
     def do_freeze(self, args):
@@ -603,7 +603,7 @@ class Bot: #{{{
                 reload(module)
                 self.action(_("Le module « %s » a été rechargé.", str(module)),
                         event_type="info")
-            except StandardError as e:
+            except StandardError, e:
                 self.erreur("Impossible de recharger le module : %s"% `e.arg`)
 
     def action(self, text = "", log = True, event_type=""):
